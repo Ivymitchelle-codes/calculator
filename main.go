@@ -18,15 +18,19 @@ func main() {
 
 	totalsales := 0.0
 
-	for i := 0; i < 3; i++ {
+	for {
 
-		fmt.Print("Enter name : ")
+		fmt.Print("\n Enter name : \n")
 		fmt.Scanln(&name)
 
-		fmt.Print("Enter number of transactions :")
+		if name == "no" {
+			break
+		}
+
+		fmt.Print("Enter number of transactions : \n")
 		fmt.Scanln(&transactions)
 
-		fmt.Print("Enter total sales : ")
+		fmt.Print("Enter total sales : \n")
 		fmt.Scanln(&sales)
 
 		person := Salesperson{
@@ -51,5 +55,12 @@ func main() {
 	} // this loop sums up the total sales of all salespeople in the salespeople slice
 
 	fmt.Printf("Total sales: %.2f\n", totalsales)
+
+	if len(salespeople) > 0 {
+		averagesales := totalsales / float64(len(salespeople))
+		fmt.Printf("Average sales are : %.2f \n", averagesales)
+	} else {
+		fmt.Println("No sales recorded!")
+	}
 
 }
